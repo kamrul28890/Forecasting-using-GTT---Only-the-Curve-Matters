@@ -1,34 +1,35 @@
-This repository provides the minimal code for running inference of GTT, with small-scale models available for conceptual experimentation. The complete version is undergoing an internal administrative review and will be released at a later date.
+# GTT Minimal Inference Code
 
-# Getting Started
+This repository provides minimal code for running inference with GTT small-scale models, intended for conceptual experimentation.  
+The complete version is under internal review and will be released later.
 
-#### Install dependencies (with python 3.10) 
+## Getting Started
 
-```shell
+### Install Dependencies
+> Requires **Python 3.10**.
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Run Experiments
+## Running Experiments
 
-#### Run the zero-shot experiments
-
-```shell
+### Zero-Shot Inference
+```bash
 cd src
-python test_zeroshot.py --gpu [GPUs] --batch_size [BS] --mode [mode] --data [DS] --uni [uni]
+python test_zeroshot.py --gpu [GPU_IDs] --batch_size [BATCH_SIZE] --mode [MODEL_SIZE] --data [DATASET] --uni [UNI_FLAG]
 ```
-Specify mode to one of the following: tiny, small, large.
+- `mode`: `tiny`, `small`, or `large`
+- `data`: `m1`, `m2`, `h1`, `h2`, `electricity`, `weather`, `traffic`, `ill`
+- `uni`: `0` for multivariate forecasting, `1` for univariate forecasting
 
-Specify data to one of the following: m1, m2, h1, h2, electricity, weather, traffic, ill.
-
-Specify uni to 0 or 1, 0: multivariate forecast, 1: univariate forecast
-
-#### Run the fine-tune experiments
-
-```shell
+### Fine-Tuning
+```bash
 cd experiments
-python test_finetune.py --gpu [GPUs] --batch_size [BS] --mode [mode] --data [DS] --uni [uni] --epochs [eps]
+python test_finetune.py --gpu [GPU_IDs] --batch_size [BATCH_SIZE] --mode [MODEL_SIZE] --data [DATASET] --uni [UNI_FLAG] --epochs [EPOCHS]
 ```
 
-## Use GTT models for zero-shot forecast on your own data
+## Using GTT Models on Your Own Data
 
-It is rather straightforward to use GTT models for zero-shot forecast on your own data (even with only CPUs), check the [tutorial](./tutorial.ipynb).
+GTT models support zero-shot forecasting on custom datasets (even on CPU).  
+Refer to the [tutorial](./tutorial.ipynb) for detailed usage instructions.
